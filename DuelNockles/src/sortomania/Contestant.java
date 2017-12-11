@@ -109,7 +109,7 @@ public abstract class Contestant extends Component implements Runnable{
 			values = temp;
 		}else if(spriteName.equals(BLANKA)){
 			int[] temp = {8,33,70,90,4,
-					6,152,75,90,5,
+					0,152,81,90,3,
 					4,1167,66,90,3};
 			values = temp;
 		}else if(spriteName.equals(E_HONDA)){
