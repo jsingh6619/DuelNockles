@@ -79,9 +79,14 @@ public abstract class Contestant extends Component implements Runnable{
 		timeset.add(time);
 	}
 
-	public Color getColor(){
-		return Color.green;
-	}
+	/**
+	 * returns the team color
+	 * To return a color, retrieve them statically using Color.blue/red/green/etc
+	 * Or customize a color using RGB values, for example:
+	 * return new Color(255,200,200);
+	 * @return
+	 */
+	public abstract Color getColor();
 
 
 	private void addFrames(String spriteName) {
@@ -144,9 +149,19 @@ public abstract class Contestant extends Component implements Runnable{
 		}
 	}
 
-	public String getSpriteName() {
-		return KEN;
-	}
+	/**
+	 * 
+	 * @return on of the Sprite sheet image addresses. Available Sprites are from Street Fighter 2.
+	 *return KEN;
+	 *return RYU;
+	 *return CHUN_LI;
+	 *return DEE_JAY;
+	 *return BLANKA;
+	 *return CAMMY;
+	 *return E_HONDA;
+	 *return FEI_LONG;
+	 */
+	public abstract String getSpriteName();
 
 	public final void setNumber(int i){
 		contestantNumber = i;
