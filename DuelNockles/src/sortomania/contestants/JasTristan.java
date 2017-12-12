@@ -68,10 +68,38 @@ public class JasTristan extends Contestant {
     }
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		QuicksortString(strings, 0, strings.length - 1);
+		Arrays.asList(strings).indexOf(toFind);
+		return -1;
 	}
 
+	 public static int partition(String[] stringArray, int idx1, int idx2) {
+	        String pivotValue = stringArray[idx1];
+	        while (idx1 < idx2) {
+	           String value1;
+	           String value2;
+	           while ((value1 = stringArray[idx1]).compareTo( pivotValue ) < 0) {
+	               idx1 = idx1 + 1;
+	           }
+	           while ((value2 = stringArray[idx2]).compareTo( pivotValue ) > 0) {
+	               idx2 = idx2 - 1;
+	           }
+	           stringArray[idx1] = value2;
+	           stringArray[idx2] = value1;
+	        }
+	        return idx1;
+	    }
+	 
+	 public static void QuicksortString(String[] stringArray, int idx1, int idx2) {
+	        if (idx1 >= idx2) {
+	            // we are done
+	            return;
+	        }
+	        int pivotIndex = partition(stringArray, idx1, idx2);
+	        QuicksortString(stringArray, idx1, pivotIndex);
+	        QuicksortString(stringArray, pivotIndex+1, idx2);
+	     }
+	    
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		int n = mostlySorted.length;
         for (int i = n / 2 - 1; i >= 0; i--)
