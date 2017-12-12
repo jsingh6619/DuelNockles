@@ -120,6 +120,9 @@ public class JasTristan extends Contestant {
 		return 0;
 	}
 
+	/*
+	 * In task 5, sort the array of Comparables, then return the index of the specified Comparable. The returned index must be the index after sorting.
+	 */
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		
 	}
