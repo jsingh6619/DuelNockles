@@ -116,8 +116,11 @@ public class JasTristan extends Contestant {
     }
 
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] arr = new int[grid.length];
+		for(int i = 0; i < grid.length; i ++) {
+			arr[i] = (int) sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(arr);
 	}
 
 	/*
