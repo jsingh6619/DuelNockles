@@ -73,9 +73,47 @@ public class JasTristan extends Contestant {
 	}
 
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		int n = mostlySorted.length;
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(mostlySorted, n, i);
+ 
+        for (int i=n-1; i>=0; i--)
+        {
+            int temp = mostlySorted[0];
+            mostlySorted[0] = mostlySorted[i];
+            mostlySorted[i] = temp;
+ 
+            heapify(mostlySorted, i, 0);
+        }
+        if(n % 2 == 1) {
+			return mostlySorted[(n-1)/2];
+		}
+		else {
+			return (mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2;
+		}
 	}
+
+	public void heapify(int arr[], int n, int i)
+    {
+        int largest = i;
+        int l = 2*i + 1;
+        int r = 2*i + 2;
+ 
+        if (l < n && arr[l] > arr[largest])
+            largest = l;
+
+        if (r < n && arr[r] > arr[largest])
+            largest = r;
+
+        if (largest != i)
+        {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+ 
+            heapify(arr, n, largest);
+        }
+    }
 
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
@@ -83,8 +121,7 @@ public class JasTristan extends Contestant {
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 }
