@@ -25,7 +25,12 @@ public class JasTristan extends Contestant {
 		for (int exp = 1; max/exp > 0; exp *= 10) {
 			countSort(random, length, exp);
 		}
-	    return random[length/2];
+		if(length % 2 == 1) {
+			return random[(length-1)/2];
+		}
+		else {
+			return random[length/2] + random[(length/2)-1] / 2;
+		}
 	}
 	
 	public int getMax(int arr[])
