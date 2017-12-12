@@ -29,7 +29,7 @@ public class JasTristan extends Contestant {
 			return random[(length-1)/2];
 		}
 		else {
-			return random[length/2] + random[(length/2)-1] / 2;
+			return ((random[length/2] + random[(length/2)-1]) / 2);
 		}
 	}
 	
@@ -69,8 +69,15 @@ public class JasTristan extends Contestant {
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		QuicksortString(strings, 0, strings.length - 1);
-		Arrays.asList(strings).indexOf(toFind);
-		return -1;
+		/*
+		 * for(int i = 0; i < strings.length; i++){
+		 * if(strings[i].equals(toFind){
+		 * return i;
+		 * }
+		 * }
+		 * return -1;
+		 */
+		return Arrays.asList(strings).indexOf(toFind);
 	}
 
 	 public static int partition(String[] stringArray, int idx1, int idx2) {
@@ -144,8 +151,9 @@ public class JasTristan extends Contestant {
     }
 
 	public double sortMultiDim(int[][] grid) {
-		int[] arr = new int[grid.length];
-		for(int i = 0; i < grid.length; i ++) {
+		int length = grid.length;
+		int[] arr = new int[length];
+		for(int i = 0; i < length; i ++) {
 			arr[i] = (int) sortAndGetMedian(grid[i]);
 		}
 		return sortAndGetMedian(arr);
@@ -155,6 +163,7 @@ public class JasTristan extends Contestant {
 	 * In task 5, sort the array of Comparables, then return the index of the specified Comparable. The returned index must be the index after sorting.
 	 */
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		return max;
 		
 	}
 
