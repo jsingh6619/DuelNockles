@@ -75,7 +75,7 @@ public class JasTristan extends Contestant {
 		 return -1;
 	}
 
-	 public static int partition(String[] stringArray, int idx1, int idx2) {
+	 public int partition(String[] stringArray, int idx1, int idx2) {
 	        String pivotValue = stringArray[idx1];
 	        while (idx1 < idx2) {
 	           String value1;
@@ -92,7 +92,7 @@ public class JasTristan extends Contestant {
 	        return idx1;
 	    }
 	 
-	 public static void QuicksortString(String[] stringArray, int idx1, int idx2) {
+	 public void QuicksortString(String[] stringArray, int idx1, int idx2) {
 	        if (idx1 >= idx2) {
 	            return;
 	        }
@@ -157,7 +157,7 @@ public class JasTristan extends Contestant {
 	 * In task 5, sort the array of Comparables, then return the index of the specified Comparable. The returned index must be the index after sorting.
 	 */
 	
-	public static void quickSort(Comparable[] arr, int lowerIndex, int higherIndex) {
+	public void quickSort(Comparable[] arr, int lowerIndex, int higherIndex) {
 		
 		if (arr == null || arr.length == 0) {
 			return;
@@ -191,7 +191,7 @@ public class JasTristan extends Contestant {
 			quickSort(arr, i, higherIndex);
 	}
 	
-	private static void swap(Comparable[] arr, int i, int j) {
+	private void swap(Comparable[] arr, int i, int j) {
 		Comparable temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
