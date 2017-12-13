@@ -9,8 +9,6 @@ import sortomania.Contestant;
 
 public class JasTristan extends Contestant {
 
-	private int max;
-
 	public Color getColor() {
 		return new Color(102,194,255);
 	}
@@ -21,7 +19,7 @@ public class JasTristan extends Contestant {
 
 	public double sortAndGetMedian(int[] random) {
 		int length = random.length;
-		max = getMax(random);
+		int max = getMax(random, 0);
 		for (int exp = 1; max/exp > 0; exp *= 10) {
 			countSort(random, length, exp);
 		}
@@ -33,7 +31,7 @@ public class JasTristan extends Contestant {
 		}
 	}
 	
-	public int getMax(int arr[])
+	public int getMax(int arr[], int max)
     {
         max = arr[0];
         for (int i = 1; i < arr.length; i++)
@@ -69,15 +67,12 @@ public class JasTristan extends Contestant {
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		QuicksortString(strings, 0, strings.length - 1);
-		/*
-		 * for(int i = 0; i < strings.length; i++){
-		 * if(strings[i].equals(toFind){
-		 * return i;
-		 * }
-		 * }
-		 * return -1;
-		 */
-		return Arrays.asList(strings).indexOf(toFind);
+		for(int i = 0; i < strings.length; i++){
+			if(strings[i].equals(toFind)){
+				return i;
+			}
+		 }
+		 return -1;
 	}
 
 	 public static int partition(String[] stringArray, int idx1, int idx2) {
@@ -99,7 +94,6 @@ public class JasTristan extends Contestant {
 	 
 	 public static void QuicksortString(String[] stringArray, int idx1, int idx2) {
 	        if (idx1 >= idx2) {
-	            // we are done
 	            return;
 	        }
 	        int pivotIndex = partition(stringArray, idx1, idx2);
@@ -124,7 +118,7 @@ public class JasTristan extends Contestant {
 			return mostlySorted[(n-1)/2];
 		}
 		else {
-			return (mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2;
+			return ((mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2);
 		}
 	}
 
@@ -163,7 +157,7 @@ public class JasTristan extends Contestant {
 	 * In task 5, sort the array of Comparables, then return the index of the specified Comparable. The returned index must be the index after sorting.
 	 */
 	
-	public static void quickSort(String[] arr, int lowerIndex, int higherIndex) {
+	public static void quickSort(Comparable[] arr, int lowerIndex, int higherIndex) {
 		
 		if (arr == null || arr.length == 0) {
 			return;
@@ -171,9 +165,7 @@ public class JasTristan extends Contestant {
 
 		int i = lowerIndex;
 		int j = higherIndex;
-		// calculate pivot number, I am taking pivot as middle index number
-		String pivot = arr[lowerIndex+(higherIndex-lowerIndex)/2];
-		// Divide into two arrays
+		Comparable pivot = arr[lowerIndex+(higherIndex-lowerIndex)/2];
 		while (i <= j) {
 			/**
 			 * In each iteration, we will identify a number from left side which 
@@ -189,20 +181,18 @@ public class JasTristan extends Contestant {
 			}
 			if (i <= j) {
 				swap(arr, i, j);
-				//move index to next position on both sides
 				i++;
 				j--;
 			}
 		}
-		// call quickSort() method recursively
 		if (lowerIndex < j)
 			quickSort(arr, lowerIndex, j);
 		if (i < higherIndex)
 			quickSort(arr, i, higherIndex);
 	}
 	
-	private static void swap(String[] arr, int i, int j) {
-		String temp = arr[i];
+	private static void swap(Comparable[] arr, int i, int j) {
+		Comparable temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
