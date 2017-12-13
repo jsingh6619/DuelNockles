@@ -162,9 +162,70 @@ public class JasTristan extends Contestant {
 	/*
 	 * In task 5, sort the array of Comparables, then return the index of the specified Comparable. The returned index must be the index after sorting.
 	 */
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		return max;
+	
+	public static void quickSort(String[] arr, int lowerIndex, int higherIndex) {
 		
+		if (arr == null || arr.length == 0) {
+			return;
+		}
+
+		int i = lowerIndex;
+		int j = higherIndex;
+		// calculate pivot number, I am taking pivot as middle index number
+		String pivot = arr[lowerIndex+(higherIndex-lowerIndex)/2];
+		// Divide into two arrays
+		while (i <= j) {
+			/**
+			 * In each iteration, we will identify a number from left side which 
+			 * is greater then the pivot value, and also we will identify a number 
+			 * from right side which is less then the pivot value. Once the search 
+			 * is done, then we exchange both numbers.
+			 */
+			while (arr[i].compareTo(pivot) < 0) {
+				i++;
+			}
+			while (arr[j].compareTo(pivot) > 0) {
+				j--;
+			}
+			if (i <= j) {
+				swap(arr, i, j);
+				//move index to next position on both sides
+				i++;
+				j--;
+			}
+		}
+		// call quickSort() method recursively
+		if (lowerIndex < j)
+			quickSort(arr, lowerIndex, j);
+		if (i < higherIndex)
+			quickSort(arr, i, higherIndex);
+	}
+	
+	private static void swap(String[] arr, int i, int j) {
+		String temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		int length = arr.length - 1;
+		quickSort(arr, 0, length);
+		return binarySearch(arr, 0, length, toFind);
+	}
+
+	private int binarySearch(Comparable[] arr, int lower, int upper, Comparable target) {
+		if(upper >= lower) {
+			int mid = lower + (upper - lower)/2;
+			
+			if(arr[mid].equals(target)) {
+				return mid;
+			}
+			if(arr[mid].compareTo(target) > 0) {
+				return binarySearch(arr, lower, mid - 1, target);
+			}
+			else return binarySearch(arr, mid + 1, upper, target);
+		}
+		return -1;
 	}
 
 }
