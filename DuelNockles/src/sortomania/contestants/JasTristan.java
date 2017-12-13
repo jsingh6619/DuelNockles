@@ -165,14 +165,10 @@ public class JasTristan extends Contestant {
 
 		int i = lowerIndex;
 		int j = higherIndex;
+		
 		Comparable pivot = arr[lowerIndex+(higherIndex-lowerIndex)/2];
+		
 		while (i <= j) {
-			/**
-			 * In each iteration, we will identify a number from left side which 
-			 * is greater then the pivot value, and also we will identify a number 
-			 * from right side which is less then the pivot value. Once the search 
-			 * is done, then we exchange both numbers.
-			 */
 			while (arr[i].compareTo(pivot) < 0) {
 				i++;
 			}
@@ -191,7 +187,7 @@ public class JasTristan extends Contestant {
 			quickSort(arr, i, higherIndex);
 	}
 	
-	private void swap(Comparable[] arr, int i, int j) {
+	public void swap(Comparable[] arr, int i, int j) {
 		Comparable temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
@@ -203,7 +199,7 @@ public class JasTristan extends Contestant {
 		return binarySearch(arr, 0, length, toFind);
 	}
 
-	private int binarySearch(Comparable[] arr, int lower, int upper, Comparable target) {
+	public int binarySearch(Comparable[] arr, int lower, int upper, Comparable target) {
 		if(upper >= lower) {
 			int mid = lower + (upper - lower)/2;
 			
